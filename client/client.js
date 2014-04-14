@@ -8,9 +8,9 @@ Meteor.startup(function () {
   Deps.autorun(function () {
     var selected = Session.get("selected");
     if (! selected || ! Emergencies.findOne(selected)) {
-      var party = Emergencies.findOne();
-      if (party)
-        Session.set("selected", party._id);
+      var emergency = Emergencies.findOne();
+      if (emergency)
+        Session.set("selected", emergency._id);
       else
         Session.set("selected", null);
     }
@@ -160,10 +160,10 @@ Template.map.rendered = function () {
       // Draw a dashed circle around the currently selected party, if any
       var callout = d3.select(self.node).select("circle.callout")
         .transition().duration(250).ease("cubic-out");
-      if (selectedParty)
-        callout.attr("cx", selectedParty.x * 500)
-        .attr("cy", selectedParty.y * 500)
-        .attr("r", radius(selectedParty) + 10)
+      if (selectedEmergency)
+        callout.attr("cx", selectedEmergency.x * 500)
+        .attr("cy", selectedEmergency.y * 500)
+        .attr("r", radius(selectedEmergency) + 10)
         .attr("class", "callout")
         .attr("display", '');
       else
