@@ -79,7 +79,7 @@ Template.attendance.rsvpIs = function (what) {
 };
 
 Template.attendance.nobody = function () {
-  return ! this.public && (this.rsvps.length + this.invited.length === 0);
+  return ! this.public && (this.rsvps.length);
 };
 
 Template.attendance.canInvite = function () {
