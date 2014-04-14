@@ -57,7 +57,7 @@ Template.details.events({
     return false;
   },
   'click .remove': function () {
-    Parties.remove(this._id);
+    Emergencies.remove(this._id);
     return false;
   }
 });
