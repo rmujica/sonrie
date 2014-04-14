@@ -204,8 +204,6 @@ Template.createDialog.events({
       });
 
       Session.set("selected", id);
-      if (Meteor.users.find().count() > 1)
-        openInviteDialog();
       Session.set("showCreateDialog", false);
     } else {
       Session.set("createError",
