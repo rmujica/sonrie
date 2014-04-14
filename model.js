@@ -92,11 +92,11 @@ Meteor.methods({
       throw new Meteor.Error(403, "Debes ingresar primero para confirmar ayuda");
     if (! _.contains(['si', 'no'], rsvp))
       throw new Meteor.Error(400, "Confirmación inválida");
-    var party = Parties.findOne(emergencyId);
-    if (! party)
+    var emergency = Emergencies.findOne(emergencyId);
+    if (! emergency)
       throw new Meteor.Error(404, "No existe tal emergencia");
 
-    var rsvpIndex = _.indexOf(_.pluck(party.rsvps, 'user'), this.userId);
+    var rsvpIndex = _.indexOf(_.pluck(emergency.rsvps, 'user'), this.userId);
     if (rsvpIndex !== -1) {
       // update existing rsvp entry
 
